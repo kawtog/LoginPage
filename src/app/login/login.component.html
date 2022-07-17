@@ -5,11 +5,11 @@
         </div>
 
         <form #userform="ngForm" ngNativeValidate (ngSubmit)="onSubmit(userform)">
-        
+
             <div class="marginAll form-group">
                 <label for="user">User</label>
                 <input type="text" id="user" name="user" class="form-control" autocomplete="off" required [(ngModel)]="userInfor.user">
-                <span  [hidden]="UserValidation" class="text-danger">
+                <span [hidden]="UserValidation" class="text-danger">
                     User incorrect
                 </span>
             </div>
@@ -19,13 +19,16 @@
                     <input [type]="showPassword ? 'text' : 'password' " id="password" name="password" class="form-control" autocomplete="off" required [(ngModel)]="userInfor.password">
                     <span class="input-group-text" [class]="showPassword ? 'bi bi-eye' : 'bi bi-eye-slash' " (click)="togglePasswordShow()"></span>
                 </div>
-                <span [hidden]="PasswordValidation" class="text-danger">
-                   Password incorrect
+                <span [hidden]="PasswordValidation" clnew branch ass="text-danger">
+                    Password incorrect
                 </span>
             </div>
-     
+            <div class="marginAll">
+                <a routerLink="/Register">Register</a>
+                <a class="float-end" routerLink="/ResetPassword">Reset Password</a>
+            </div>
             <div class="d-grid gap-2 col-6 mx-auto">
-                
+
                 <button type="submit" class="btn btn-primary">Login</button>
             </div>
 

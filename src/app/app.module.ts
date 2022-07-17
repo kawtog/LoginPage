@@ -9,12 +9,14 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { NopagetodisplayComponent } from './nopagetodisplay/nopagetodisplay.component';
 import { HomeComponent } from './home/home.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const appRoutes: Routes = [
   { path: 'Login', component: LoginComponent }
-  ,{ path: 'Register', component: RegisterComponent }
-  ,{ path: 'Home', component: HomeComponent }
-  , { path: '', redirectTo: '/login', pathMatch: 'full' }
+  , { path: 'Register', component: RegisterComponent }
+  , { path: 'ResetPassword', component: ResetPasswordComponent }
+  , { path: 'Home', component: HomeComponent }
+  , { path: '', redirectTo: '/Login', pathMatch: 'full' }
   , { path: '**', component: NopagetodisplayComponent }
 ]
 
@@ -25,12 +27,13 @@ const appRoutes: Routes = [
     RegisterComponent,
     LoginComponent,
     NopagetodisplayComponent,
-    HomeComponent
+    HomeComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,  
+    FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
