@@ -1,1 +1,153 @@
-<p>register works!</p>
+<div class="container Register">
+
+
+    <div class="text-center  mb-3">
+        <h2>Register</h2>
+    </div>
+    <form class="needs-validation" [formGroup]="reactiveform" (ngSubmit)="onSubmit()" novalidate>
+
+        <div class="form-group form-floating mb-3">
+            <input type="text" id="user" name="user" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['username'].errors }" placeholder="User" formControlName="username">
+            <label for="user">User</label>
+            <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+                <div *ngIf="f['username'].errors['required']">
+                    Username is required
+                </div>
+                <div *ngIf="f['username'].errors['minlength']">
+                    Username must be at least 6 characters
+                </div>
+                <div *ngIf="f['username'].errors['maxlength']">
+                    Username must not exceed 20 characters
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group mb-3">
+
+            <div class="row">
+                <div class="col">
+                    <div class=" form-floating">
+                        <input type="text" id="name" name="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" placeholder="name" formControlName="name">
+                        <label for="name">Name</label>
+                        <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                            <div *ngIf="f['name'].errors['required']">
+                                Name is required
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col">
+
+                    <div class="form-floating ">
+                        <input type="text" id="surname" name="surname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['surname'].errors }" placeholder="Surname" formControlName="surname">
+                        <label for="surname">Surname</label>
+                        <div *ngIf="submitted && f['surname'].errors" class="invalid-feedback">
+                            <div *ngIf="f['surname'].errors['required']">
+                                Surname is required
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group form-floating mb-3">
+            <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['dateOfBirth'].errors }" placeholder="Date of birth" formControlName="dateOfBirth">
+            <label for="dateOfBirth">Date of birth</label>
+            <div *ngIf="submitted && f['dateOfBirth'].errors" class="invalid-feedback">
+                <div *ngIf="f['dateOfBirth'].errors['required']">
+                    Date is required
+                </div>
+            </div>
+
+
+        </div>
+        <div class="form-group mb-3">
+            <div class="form-group" [ngClass]="{ 'is-invalid': submitted && f['gender'].errors }">
+                <div class="row">
+                    <div class="col">
+
+
+                        <div class="form-check ">
+                            <input type="radio" class="form-check-input" id="gender" name="gender" value="Male" formControlName="gender">
+                            <label class="form-check-label" for="gender">Male</label>
+
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check ">
+                            <input type="radio" class="form-check-input" id="gender" name="gender" value="Female" formControlName="gender">
+                            <label class="form-check-label" for="gender">Female</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="submitted && f['gender'].errors" class="invalid-feedback">
+                <div *ngIf="f['gender'].errors['required']">
+                    Gender is required
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="email" id="email" name="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" placeholder="Email" formControlName="email">
+            <label for="email">Email</label>
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+            </div>
+
+        </div>
+
+        <div class="inPass mb-3 position-relative" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+
+            <div class="form-floating flex-grow-1">
+                <input [type]="showPassword ? 'text' : 'password' " id="password" name="password" placeholder="Password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" formControlName="password">
+                <label for="password">Password</label>
+                <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                    <div *ngIf="f['password'].errors['required']">Password is required</div>
+                    <div *ngIf="f['password'].errors['minlength']">
+                        Password must be at least 6 characters
+                    </div>
+                    <div *ngIf="f['password'].errors['maxlength']">
+                        Username must not exceed 40 characters
+                    </div>
+                </div>
+            </div>
+
+
+            <span class="position-absolute top-50 end-0 translate-middle" [class]="showPassword ? 'bi bi-eye' : 'bi bi-eye-slash' " (click)="togglePasswordShow()"></span>
+
+        </div>
+        <div class="inPass mb-3 position-relative" [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }">
+
+
+            <div class="form-floating flex-grow-1  ">
+                <input [type]="showPassword ? 'text' : 'password' " id="confrimPassword" name="password" placeholder="Confrim Password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }" formControlName="confirmPassword">
+                <label for="password">Confrim Password</label>
+                <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
+                    <div *ngIf="f['confirmPassword'].errors['required']">
+                        Confirm Password is required
+                    </div>
+                    <div *ngIf="f['confirmPassword'].errors['matching']">
+                        Confirm Password does not match
+                    </div>
+                </div>
+
+            </div>
+
+            <span class="position-absolute top-50 end-0 translate-middle" [class]="showPassword ? 'bi bi-eye' : 'bi bi-eye-slash' " (click)="togglePasswordShow()"></span>
+
+        </div>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn btn-primary">Continue</button>
+        </div>
+
+    </form>
+</div>

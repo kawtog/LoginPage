@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { NopagetodisplayComponent } from './nopagetodisplay/nopagetodisplay.component';
 import { HomeComponent } from './home/home.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: 'Login', component: LoginComponent }
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

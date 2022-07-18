@@ -14,11 +14,8 @@ export class LoginComponent implements OnInit {
    showPassword:boolean = false;
    UserValidation:boolean = true;
    PasswordValidation:boolean = true;
-   userInfor :UserInformation ={
-    user:'',
-    password:'',
-    success:false
-   }
+   userInfor :UserInformation =new UserInformation();
+   
   constructor(private router:Router,private userservice :UserService) { }
 
   ngOnInit(): void {

@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
 import { UserInformation } from './user';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  user:UserInformation={
-    user:'',
-    password:'',
-    success:false
-  }
+  user:UserInformation=new UserInformation();
   constructor() { }
 
   AllowtoWeb(){
@@ -29,8 +26,6 @@ export class UserService {
     return true;
   }
   Logout(){
-    this.user ={   user:'',
-    password:'',
-    success:false};
+    this.user =new UserInformation();
   }
 }
