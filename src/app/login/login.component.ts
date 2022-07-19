@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, NgForm, Validators,FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserInformation } from '../data/user';
 import {UserService} from '../data/user.service'
@@ -15,8 +15,14 @@ export class LoginComponent implements OnInit {
    UserValidation:boolean = true;
    PasswordValidation:boolean = true;
    userInfor :UserInformation =new UserInformation();
-   
-  constructor(private router:Router,private userservice :UserService) { }
+   loginform!: FormGroup;
+  constructor(private router:Router,private userservice :UserService,private formBuilder:FormBuilder) {
+
+    this.loginform =this.formBuilder.group({
+      username: new FormControl('', Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern('[a-zA-Z0-9]*')])),
+      password: new FormControl('',  Validators.compose([Validators.required, Validators.minLength(6), Validators.pattern('[a-zA-Z0-9@!?]*')]))
+    })
+   }
 
   ngOnInit(): void {
     

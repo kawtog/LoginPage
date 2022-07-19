@@ -6,18 +6,25 @@
     </div>
     <form class="needs-validation" [formGroup]="reactiveform" (ngSubmit)="onSubmit()" novalidate>
 
-        <div class="form-group form-floating mb-3">
+        <div class="inPass form-group form-floating mb-3">
             <input type="text" id="user" name="user" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['username'].errors }" placeholder="User" formControlName="username">
             <label for="user">User</label>
             <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
                 <div *ngIf="f['username'].errors['required']">
+                    <i class="bi bi-exclamation-circle iAlert " ></i>   
                     Username is required
                 </div>
                 <div *ngIf="f['username'].errors['minlength']">
+                    <i class="bi bi-exclamation-circle iAlert " ></i>   
                     Username must be at least 6 characters
                 </div>
                 <div *ngIf="f['username'].errors['maxlength']">
+                    <i class="bi bi-exclamation-circle iAlert " ></i>   
                     Username must not exceed 20 characters
+                </div>
+                <div *ngIf="f['username'].errors['pattern']">
+                    <i class="bi bi-exclamation-circle iAlert " ></i>   
+                    Sorry, only letters (a-z), numbers (0-9) are allowed.
                 </div>
             </div>
 
@@ -27,11 +34,12 @@
 
             <div class="row">
                 <div class="col">
-                    <div class=" form-floating">
+                    <div class="inPass form-floating">
                         <input type="text" id="name" name="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" placeholder="name" formControlName="name">
                         <label for="name">Name</label>
                         <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
                             <div *ngIf="f['name'].errors['required']">
+                                <i class="bi bi-exclamation-circle iAlert " ></i>   
                                 Name is required
                             </div>
                         </div>
@@ -40,11 +48,12 @@
                 </div>
                 <div class="col">
 
-                    <div class="form-floating ">
+                    <div class="inPass form-floating ">
                         <input type="text" id="surname" name="surname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['surname'].errors }" placeholder="Surname" formControlName="surname">
                         <label for="surname">Surname</label>
                         <div *ngIf="submitted && f['surname'].errors" class="invalid-feedback">
                             <div *ngIf="f['surname'].errors['required']">
+                                <i class="bi bi-exclamation-circle iAlert " ></i>   
                                 Surname is required
                             </div>
                         </div>
@@ -54,11 +63,12 @@
             </div>
         </div>
 
-        <div class="form-group form-floating mb-3">
+        <div class="inPass form-group form-floating mb-3">
             <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['dateOfBirth'].errors }" placeholder="Date of birth" formControlName="dateOfBirth">
             <label for="dateOfBirth">Date of birth</label>
             <div *ngIf="submitted && f['dateOfBirth'].errors" class="invalid-feedback">
                 <div *ngIf="f['dateOfBirth'].errors['required']">
+                    <i class="bi bi-exclamation-circle iAlert " ></i>   
                     Date is required
                 </div>
             </div>
@@ -88,18 +98,23 @@
 
             <div *ngIf="submitted && f['gender'].errors" class="invalid-feedback">
                 <div *ngIf="f['gender'].errors['required']">
+                    <i class="bi bi-exclamation-circle iAlert " ></i>   
                     Gender is required
                 </div>
             </div>
 
         </div>
 
-        <div class="form-floating mb-3">
+        <div class="inPass form-floating mb-3">
             <input type="email" id="email" name="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" placeholder="Email" formControlName="email">
             <label for="email">Email</label>
             <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-                <div *ngIf="f['email'].errors['required']">Email is required</div>
-                <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+                <div *ngIf="f['email'].errors['required']">
+                    <i class="bi bi-exclamation-circle iAlert " ></i>   
+                    Email is required</div>
+                <div *ngIf="f['email'].errors['email']">
+                    <i class="bi bi-exclamation-circle iAlert " ></i>   
+                    Email is invalid</div>
             </div>
 
         </div>
@@ -110,12 +125,25 @@
                 <input [type]="showPassword ? 'text' : 'password' " id="password" name="password" placeholder="Password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" formControlName="password">
                 <label for="password">Password</label>
                 <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
-                    <div *ngIf="f['password'].errors['required']">Password is required</div>
+                    <div *ngIf="f['password'].errors['required']">
+                        <i class="bi bi-exclamation-circle iAlert " ></i>   
+                        Password is required
+                    </div>
                     <div *ngIf="f['password'].errors['minlength']">
-                        Password must be at least 6 characters
+                        <i class="bi bi-exclamation-circle iAlert " ></i>   
+                        Password must be at least 8 characters
                     </div>
                     <div *ngIf="f['password'].errors['maxlength']">
-                        Username must not exceed 40 characters
+                        <i class="bi bi-exclamation-circle iAlert " ></i>   
+                        Password must not exceed 20 characters
+                    </div>
+                    <div *ngIf="f['password'].errors['pattern']">
+                        <i class="bi bi-exclamation-circle iAlert " ></i>   
+                        Sorry, only letters (a-z), numbers (0-9) are allowed.
+                    </div>
+                    <div *ngIf="f['password'].errors['whitespace']">
+                        <i class="bi bi-exclamation-circle iAlert " ></i>   
+                        Sorry, whitespace are not allowed.
                     </div>
                 </div>
             </div>
@@ -132,9 +160,11 @@
                 <label for="password">Confrim Password</label>
                 <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
                     <div *ngIf="f['confirmPassword'].errors['required']">
+                        <i class="bi bi-exclamation-circle iAlert " ></i>   
                         Confirm Password is required
                     </div>
                     <div *ngIf="f['confirmPassword'].errors['matching']">
+                        <i class="bi bi-exclamation-circle iAlert " ></i>   
                         Confirm Password does not match
                     </div>
                 </div>
